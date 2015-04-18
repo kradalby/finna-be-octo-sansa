@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>TTM4128 CIMOM interface</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="static/custom.css">
+	</head>
+	<body>
+		<div class="container main-body">
+			<div class="row">
+				<div class="col-md-12">
+					<h3>Server OS</h3>
+					<span class="label label-info">{{ server_os }}</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h3>Nettwork interfaces</h3>
+					<table class="table">
+						<thead>
+							<th>Name</th>
+							<th>IP</th>
+							<th>Mask</th>
+						</thead>
+						<tbody>
+							{% for interface in interfaces %}
+								<tr>
+									<td>{{ interface.name }}</td>
+									<td>{{ interface.ip }}</td>
+									<td>{{ interface.mask }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</tbody>
+</html>	

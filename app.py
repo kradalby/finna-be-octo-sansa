@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 #!/usr/bin/env python
 '''
 File: app.py
@@ -10,7 +12,7 @@ from cim import Cimom
 from snmp import SNMP
 
 cim_url = "http://ttm4128.item.ntnu.no:5988"
-c = Cimom(url)
+c = Cimom(cim_url)
 s = SNMP("vsop.online.ntnu.no", 161, "public")
 
 
@@ -18,7 +20,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html', servers=servers)
+    server_os = "Windows 98 enterprise server"
+    interfaces = [
+        {"name": "test1", "ip": "91.2.34.198", "mask": "255.255.255.0"}, 
+        {"name": "test2", "ip": "91.2.34.197", "mask": "255.255.255.0"}]
+    return render_template('index.html', interfaces=interfaces, server_os=server_os)
 
 if __name__ == '__main__':
     app.debug = True
