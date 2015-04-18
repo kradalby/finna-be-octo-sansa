@@ -5,9 +5,14 @@ Author: Kristoffer Dalby, Tor Håkon Bonsaksen, Trond Walleraunet
 Description: Main web app
 '''
 
-cim_url = "http://ttm4128.item.ntnu.no:5988"
-
 from flask import Flask, render_template
+from cim import Cimom
+from snmp import SNMP
+
+cim_url = "http://ttm4128.item.ntnu.no:5988"
+c = Cimom(url)
+s = SNMP("vsop.online.ntnu.no", 161, "public")
+
 
 app = Flask(__name__)
 
