@@ -1,6 +1,10 @@
 
 @media (min-width: 768px) {
   .container {
-    max-width: 430px;
+    max-width: 530px;
   }
+}
+
+.buttons{
+	padding-top: 30px;
 }

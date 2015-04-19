@@ -6,14 +6,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-		<link rel="stylesheet" href="static/custom.css">
+		<link rel="stylesheet" href="/static/custom.css">
 	</head>
 	<body>
-		<div class="container main-body">
+		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-8">
 					<h3>Server OS</h3>
 					<span class="label label-info">{{ server_os }}</span>
+				</div>
+				<div class="col-md-4 buttons">
+					<div class="btn-group" role="group" aria-label="...">
+					  <a href="/" class="btn btn-default {% if cim %} active {% endif %}" role="button">CIM</a>
+					  <a href="/snmp/" class="btn btn-default {% if not cim %} active {% endif %}" role="button">SNMP</a>
+					</div>
 				</div>
 			</div>
 			<div class="row">

@@ -24,7 +24,16 @@ def index():
     interfaces = [
         {"name": "test1", "ip": "91.2.34.198", "mask": "255.255.255.0"}, 
         {"name": "test2", "ip": "91.2.34.197", "mask": "255.255.255.0"}]
-    return render_template('index.html', interfaces=interfaces, server_os=server_os)
+    return render_template('index.html', interfaces=interfaces, server_os=server_os, cim=True)
+
+
+@app.route('/snmp/')
+def snmp():
+    server_os = "Debian 3.14"
+    interfaces = [
+        {"name": "test3", "ip": "91.2.34.198", "mask": "255.255.255.0"}, 
+        {"name": "test4", "ip": "91.2.34.197", "mask": "255.255.255.0"}]
+    return render_template('index.html', interfaces=interfaces, server_os=server_os, cim=False)
 
 if __name__ == '__main__':
     app.debug = True
