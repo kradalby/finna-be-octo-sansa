@@ -10,6 +10,7 @@ Description: Main web app
 from flask import Flask, render_template
 from cim import Cimom
 from snmp import SNMP
+import re
 
 cim_url = "http://ttm4128.item.ntnu.no:5988"
 c = Cimom(cim_url)
@@ -25,6 +26,11 @@ def index():
 #        {"name": "test1", "ip": "91.2.34.198", "mask": "255.255.255.0"}, 
 #        {"name": "test2", "ip": "91.2.34.197", "mask": "255.255.255.0"}]
     server_os, interfaces = c.get_what_we_want()
+
+    match = re.search("(?<=PRETTY_NAME=)\"(.*?)\"", server_os)
+    if match.group(0):
+        server_os = match.group(0)
+
     return render_template('index.html', interfaces=interfaces, server_os=server_os, cim=True)
 
 
