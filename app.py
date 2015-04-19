@@ -1,6 +1,6 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-#!/usr/bin/env python
 '''
 File: app.py
 Author: Kristoffer Dalby, Tor Håkon Bonsaksen, Trond Walleraunet
@@ -20,10 +20,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    server_os = "Windows 98 enterprise server"
-    interfaces = [
-        {"name": "test1", "ip": "91.2.34.198", "mask": "255.255.255.0"}, 
-        {"name": "test2", "ip": "91.2.34.197", "mask": "255.255.255.0"}]
+#    server_os = "Windows 98 enterprise server"
+#    interfaces = [
+#        {"name": "test1", "ip": "91.2.34.198", "mask": "255.255.255.0"}, 
+#        {"name": "test2", "ip": "91.2.34.197", "mask": "255.255.255.0"}]
+    server_os, interfaces = c.getWhatWeNeed()
     return render_template('index.html', interfaces=interfaces, server_os=server_os, cim=True)
 
 
