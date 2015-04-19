@@ -31,6 +31,10 @@ class Cimom():
         '''
         return [x.classname for x in self.session.EnumerateClasses()]
 
+    def getWhatWeNeed(self):
+        interfaces = self.getInstacesList("CIM_IPProtocolEndpoint")
+        os = self.getInstacesList("CIM_OperatingSystem")
+        
+        data = [{"name": x['ElementName'], "ip": x['IPv4Address'], "mask": x['SubnetMask']} for x in interfaces]
 
-
-
+        return os[0]["Version"], data
