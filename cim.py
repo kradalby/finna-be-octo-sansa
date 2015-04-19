@@ -15,7 +15,7 @@ class Cimom():
         self.url = url
         self.session = pywbem.WBEMConnection(self.url)
 
-    def getInstacesList(self, class_name):
+    def get_instances_list(self, class_name):
         '''
         Get all instances of a class.
 
@@ -23,7 +23,7 @@ class Cimom():
         '''
         return [dict(x.items()) for x in self.session.EnumerateInstances(class_name)]
 
-    def getClassList(self):
+    def get_class_list(self):
         '''
         Get all names of classes available
 
@@ -31,9 +31,9 @@ class Cimom():
         '''
         return [x.classname for x in self.session.EnumerateClasses()]
 
-    def getWhatWeNeed(self):
-        interfaces = self.getInstacesList("CIM_IPProtocolEndpoint")
-        os = self.getInstacesList("CIM_OperatingSystem")
+    def get_what_we_want(self):
+        interfaces = self.get_instances_list("CIM_IPProtocolEndpoint")
+        os = self.get_instances_list("CIM_OperatingSystem")
         
         data = [{"name": x['ElementName'], "ip": x['IPv4Address'], "mask": x['SubnetMask']} for x in interfaces]
 

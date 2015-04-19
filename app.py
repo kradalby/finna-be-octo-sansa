@@ -24,7 +24,7 @@ def index():
 #    interfaces = [
 #        {"name": "test1", "ip": "91.2.34.198", "mask": "255.255.255.0"}, 
 #        {"name": "test2", "ip": "91.2.34.197", "mask": "255.255.255.0"}]
-    server_os, interfaces = c.getWhatWeNeed()
+    server_os, interfaces = c.get_what_we_want()
     return render_template('index.html', interfaces=interfaces, server_os=server_os, cim=True)
 
 
