@@ -30,10 +30,11 @@ def index():
 
 @app.route('/snmp/')
 def snmp():
-    server_os = "Debian 3.14"
-    interfaces = [
-        {"name": "test3", "ip": "91.2.34.198", "mask": "255.255.255.0"}, 
-        {"name": "test4", "ip": "91.2.34.197", "mask": "255.255.255.0"}]
+    #server_os = "Debian 3.14"
+    #interfaces = [
+    #    {"name": "test3", "ip": "91.2.34.198", "mask": "255.255.255.0"}, 
+    #    {"name": "test4", "ip": "91.2.34.197", "mask": "255.255.255.0"}]
+    server_os, interfaces = s.get_what_we_want()
     return render_template('index.html', interfaces=interfaces, server_os=server_os, cim=False)
 
 if __name__ == '__main__':
