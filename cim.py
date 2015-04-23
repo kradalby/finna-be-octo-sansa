@@ -19,19 +19,24 @@ class Cimom():
         '''
         Get all instances of a class.
 
-        returns: list with all instances as dicts
+        returns: list with all instances as dictionaries.
         '''
         return [dict(x.items()) for x in self.session.EnumerateInstances(class_name)]
 
     def get_class_list(self):
         '''
-        Get all names of classes available
+        Get all names of classes available on the remote system.
 
-        returns: list of class names
+        returns: list of class names as strings.
         '''
         return [x.classname for x in self.session.EnumerateClasses()]
 
     def get_what_we_want(self):
+        '''
+        Get all the information needed for the assignment.
+
+        returns: string with os version information and a list with dictionaries with interface information.
+        '''
         interfaces = self.get_instances_list("CIM_IPProtocolEndpoint")
         os = self.get_instances_list("CIM_OperatingSystem")
         

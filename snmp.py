@@ -21,9 +21,9 @@ class SNMP():
 
     def get_OID_name_value(self, oid):
         '''
-        Get a name, value pair from a OID
+        Get a name/oid, value pair from a OID
 
-        returns: name, value
+        returns: name/oid, value
         '''
         errorIndication, errorStatus, errorIndex, varBinds = self.cmd.getCmd(
             cmdgen.CommunityData(self.community),
@@ -42,13 +42,15 @@ class SNMP():
                 )
             else:
                 for name, val in varBinds:
+                    # The format strings will asure that the returned values 
+                    # are strings and not information saves in octets.
                     return "%s" % name.prettyPrint(), "%s" % val.prettyPrint()
 
     def get_bulk_OID_name_value(self, oid, depth):
         '''
-        Get a name, value pair from a OID
+        Get a name, value pair from multiple OIDs, takes OIDs as a list and returns tuples of name/OIDs, and values
 
-        returns: name, value
+        returns: [(name, value)]
         '''
         errorIndication, errorStatus, errorIndex, varBindTable = self.cmd.bulkCmd(
             cmdgen.CommunityData(self.community),
@@ -76,20 +78,11 @@ class SNMP():
                         data.append(("%s" % name.prettyPrint(), "%s" % val.prettyPrint()))
                 return data
 
-    #def get_bulk_OID_name_value(self, oidlist):
-    #    '''
-    #    Get a dictionary with names as keys and value as value
-
-    #    returns: { OID: value }
-    #    '''
-    #    result = {}
-    #    for oid in oidlist:
-    #        name, value = self.get_OID_name_value(oid)
-    #        result[name] = value
-    #    return result
-
 
     def get_what_we_want(self):
+        '''
+
+        '''
         ipaddress = "1.3.6.1.2.1.4.20.1.1"
         mask = "1.3.6.1.2.1.4.20.1.3"
         ifname = "1.3.6.1.2.1.2.2.1.2"
