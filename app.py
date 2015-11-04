@@ -18,7 +18,7 @@ cim_url = "http://ttm4128.item.ntnu.no:5988"
 c = Cimom(cim_url)
 
 # Initialize the SNMP class
-s = SNMP("vsop.online.ntnu.no", 161, "public")
+s = SNMP('snmp-server.item.ntnu.no', 161, "ttm4128v2")
 
 # Initialize the Flask framwork
 app = Flask(__name__)
@@ -51,4 +51,4 @@ def snmp():
 
 if __name__ == '__main__':
     app.debug = True
-    app.run()
+    app.run(port=9000)
